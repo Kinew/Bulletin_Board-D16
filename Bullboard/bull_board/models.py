@@ -32,7 +32,7 @@ class UserResponse(models.Model):
 
 
 class Advert(models.Model):
-    heading = models.OneToOneField(Advert, on_delete=models.CASCADE)
+    heading = models.TextField(max_length=20, unique=True)
     text = models.TextField()
     dateCreations = models.DateTimeField(auto_now_add=True)
     images = models.ImageField()

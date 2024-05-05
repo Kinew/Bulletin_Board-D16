@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.yandex',
 
-    'сkeditor',
+    'ckeditor',
     'bull_board',
 ]
 
