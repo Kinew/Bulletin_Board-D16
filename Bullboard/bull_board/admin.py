@@ -1,3 +1,13 @@
 from django.contrib import admin
+from .models import *
 
-# Register your models here.
+from ckeditor.widgets import CKEditorWidget
+
+
+class PostAdminForm(forms.ModelForm):
+    description = forms.CharField(Label="Описание", widget=CKEditorWidget())
+    class Meta:
+        model = Movie
+        fields = '__all__'
+
+

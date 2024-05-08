@@ -25,8 +25,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('pages/', include('django.contrib.flatpages.urls')),
-    path('', TemplateView.as_view(temlate_name="index.html")),
+    path('', TemplateView.as_view(template_name="index.html")),
     path('accounts/', include('allauth.urls')),
-    path('account/', include("account.urls")),
+    # path('account/', include("account.urls")),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('logout/', LogoutView.as_view()),
 ] + static(settings.MEDIA_URL, document_poot=settings.MEDIA_ROOT)

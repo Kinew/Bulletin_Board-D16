@@ -20,7 +20,7 @@ class Article(models.Model):
     author = models.OneToOneField(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=64)
     text = models.TextField()
-    category = models.CharField(max_length=8, choices=TYPE, default='tank')
+    category = models.CharField(max_length=12, choices=TYPE, default='tank')
     upload = models.FileField(upload_to='uploads/')
 
 
@@ -53,3 +53,10 @@ class Comment(models.Model):
     def dislike(self):
         self.rating -= 1
         self.save()
+
+
+class Movie(models.Model):
+    title = models.CharField('Название', max_length=100)
+    description = models.TextField('Описание')
+    poster = models.ImageField('movies/')
+    form = MovieAdminForm
