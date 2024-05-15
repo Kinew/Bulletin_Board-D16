@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Article(models.Model):
@@ -19,7 +20,7 @@ class Article(models.Model):
 
     author = models.OneToOneField(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=64)
-    text = models.TextField()
+    text = RichTextUploadingField
     category = models.CharField(max_length=12, choices=TYPE, default='tank')
     upload = models.FileField(upload_to='uploads/')
 
@@ -53,10 +54,3 @@ class Comment(models.Model):
     def dislike(self):
         self.rating -= 1
         self.save()
-
-
-class Movie(models.Model):
-    title = models.CharField('Название', max_length=100)
-    description = models.TextField('Описание')
-    poster = models.ImageField('movies/')
-    form = MovieAdminForm
