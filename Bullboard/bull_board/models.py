@@ -19,31 +19,10 @@ class Article(models.Model):
 
 
     author = models.OneToOneField(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=64)
-    text = RichTextUploadingField
-    category = models.CharField(max_length=12, choices=TYPE, default='tank')
-    upload = models.FileField(upload_to='uploads/')
-
-
-class ListView(models.Model):
-    title = models.CharField(max_length=64)
-    category = models.CharField(max_length=12, choices=TYPE, default='tank')
-    text = RichTextUploadingField
-
-
-class UserResponse(models.Model):
-    author = models.OneToOneField(User, on_delete=models.CASCADE)
-    text = models.TextField()
-    article = models.ForeignKey(Article, on_delete=models.CASCADE)
-    status = models.BooleanField(default=False)
-
-
-class Advert(models.Model):
-    heading = models.TextField(max_length=20, unique=True)
-    text = models.TextField()
     dateCreations = models.DateTimeField(auto_now_add=True)
-    images = models.ImageField()
-
+    title = models.CharField(max_length=64)
+    text = RichTextUploadingField()
+    category = models.CharField(max_length=12, choices=TYPE, default='tank')
 
 
 class Comment(models.Model):
@@ -51,12 +30,3 @@ class Comment(models.Model):
     commentUser = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
     dateCreations = models.DateTimeField(auto_now_add=True)
-    rating = models.SmallIntegerField(default=0)
-
-    def like(self):
-        self.rating += 1
-        self.save()
-
-    def dislike(self):
-        self.rating -= 1
-        self.save()
