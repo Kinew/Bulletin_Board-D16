@@ -25,6 +25,12 @@ class Article(models.Model):
     upload = models.FileField(upload_to='uploads/')
 
 
+class ListView(models.Model):
+    title = models.CharField(max_length=64)
+    category = models.CharField(max_length=12, choices=TYPE, default='tank')
+    text = RichTextUploadingField
+
+
 class UserResponse(models.Model):
     author = models.OneToOneField(User, on_delete=models.CASCADE)
     text = models.TextField()
