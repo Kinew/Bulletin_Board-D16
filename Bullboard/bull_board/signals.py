@@ -20,7 +20,7 @@ def my_handler(sender, instanse, created, **kwargs):
     )
 
 
-    mail = instanse.article.autor.email
+    mail = instanse.article.author.email
     send_mail(
         'Subject here',
         'Here is the message.',

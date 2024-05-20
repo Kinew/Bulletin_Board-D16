@@ -246,7 +246,7 @@ ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-ACCOUNT_FORMS = {"signup": "accounts.forms.CustomSignupForm"}
+# ACCOUNT_FORMS = {"signup": "accounts.forms.CustomSignupForm"}
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
