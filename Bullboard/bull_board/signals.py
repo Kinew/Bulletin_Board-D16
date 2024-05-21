@@ -28,3 +28,13 @@ def my_handler(sender, instanse, created, **kwargs):
         [mail],
         fail_silently=False
     )
+
+
+    mail = instanse.commentUser.email
+    send_mail(
+        'Subject here',
+        'Here is the message.',
+        'host@mail.ru',
+        [mail],
+        fail_silently=False
+    )
