@@ -30,3 +30,22 @@ class Comment(models.Model):
     commentUser = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
     dateCreations = models.DateTimeField(auto_now_add=True)
+    status = models.BooleanField(default=False)
+
+
+class PostCategory(models.Model):
+    postThrough = models.ForeignKey(Post, on_delete=models.CASCADE)
+    categoryThrough = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+
+class Subscription(models.Model):
+    user = models.ForeignKey(
+        to=User,
+        on_delete=models.CASCADE,
+        related_name='subscriptions',
+    )
+    category = models.ForeignKey(
+        to='Category',
+        on_delete=models.CASCADE,
+        related_name='subscriptions',
+    )
